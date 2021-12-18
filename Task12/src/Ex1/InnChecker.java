@@ -20,7 +20,7 @@ public class InnChecker {
         System.out.println("ИНН действителен!");
     }
 
-    public static boolean checkInn(BigInteger inn) throws InnNotValidException{
+    public static void checkInn(BigInteger inn) throws InnNotValidException{
         int i = 0;
         BigInteger cInn = new BigInteger(inn.toByteArray());
         while (!cInn.equals(new BigInteger("0"))){
@@ -28,6 +28,5 @@ public class InnChecker {
             cInn = new BigInteger(cInn.divide(new BigInteger("10")).toByteArray());
         }
         if(i != 10 && i != 12) throw new InnNotValidException(inn);
-        return true;
     }
 }
